@@ -1,0 +1,126 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="rudiment.jsoupexample.fragment.DownloadFragment"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="rudiment.jsoupexample.MainActivity">
+
+        <RelativeLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/adView"
+            android:padding="16dp">
+
+            <RadioGroup
+                android:id="@+id/selectionGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/imageUrlRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Image Url"/>
+
+                <RadioButton
+                    android:id="@+id/videoUrlRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Video Url"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/urlEdt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/selectionGroup"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edit_gb"
+                android:hint="Enter url"
+                android:padding="16dp"/>
+
+            <Button
+                android:id="@+id/pasteUrlBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/urlEdt"
+                android:layout_toStartOf="@+id/checkUrlBtn"
+                android:onClick="@{()->fragment.pasteUrl()}"
+                android:text="Paste Url"
+                android:textColor="#fff"
+                app:backgroundTint="@color/colorAccent"/>
+
+            <Button
+                android:id="@+id/checkUrlBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/urlEdt"
+                android:onClick="@{()->fragment.loadUrl()}"
+                android:text="Check Url"
+                android:textColor="#fff"
+                app:backgroundTint="@color/colorAccent"/>
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/checkUrlBtn"
+                android:layout_marginTop="16dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_placeholder_600x400"
+                />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/downloadBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="@{()->fragment.onDownloadBtnClick()}"
+                android:src="@drawable/ic_file_download"
+                android:text="Download"
+                app:useCompatPadding="true"
+                />
+
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/downloadBtn"
+                android:layout_alignParentEnd="true"
+                android:onClick="@{()->fragment.createInstagramIntent()}"
+                android:scaleX="-1"
+                android:src="@drawable/ic_reply"
+                android:text="Add URL"
+                app:useCompatPadding="true"
+                />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="#cfcfcf"/>
+    </RelativeLayout>
+</layout>

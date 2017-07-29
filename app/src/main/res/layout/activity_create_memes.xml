@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="file"
+            type="java.io.File"/>
+
+        <variable
+            name="activity"
+            type="rudiment.jsoupexample.CreateMemesActivity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="rudiment.jsoupexample.CreateMemesActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_placeholder_600x400"
+                app:imageFile="@{file}"
+                />
+
+            <EditText
+                android:id="@+id/headerText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="center"
+                android:lines="1"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp"
+                android:text="HEADER TEXT"
+                android:textColor="#000000"
+                android:textSize="22dp"/>
+
+            <EditText
+                android:id="@+id/footerText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@null"
+                android:gravity="center"
+                android:inputType="textCapCharacters"
+                android:lines="1"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp"
+                android:text="FOOTER TEXT"
+                android:textColor="#000000"
+                android:textSize="22dp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Text Size"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="36dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="10dp"
+            android:max="30"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="26dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:gravity="center"
+                android:onClick="@{()->activity.onSelectTextColor()}"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Text Color"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:id="@+id/textColorView"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#7b2d2d"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:gravity="center"
+                android:onClick="@{()->activity.onSelectTextBorderColor()}"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Border Color"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:id="@+id/backgroundColorView"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#7b2d2d"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>
