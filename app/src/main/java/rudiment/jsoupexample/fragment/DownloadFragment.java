@@ -26,6 +26,8 @@ import com.androidquery.AQuery;
 import com.github.jksiezni.permissive.PermissionsGrantedListener;
 import com.github.jksiezni.permissive.PermissionsRefusedListener;
 import com.github.jksiezni.permissive.Permissive;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -67,6 +69,10 @@ public class DownloadFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.setFragment(this);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        binding.adView.loadAd(adRequest);
+        binding.adView2.loadAd(adRequest);
 
         binding.selectionGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -207,6 +213,8 @@ public class DownloadFragment extends Fragment {
             super.onPostExecute(aVoid);
             progressDialog.dismiss();
             if (aVoid != null && aVoid.size() != 0) {
+                binding.adView2.setVisibility(View.GONE);
+                binding.imageView.setVisibility(View.VISIBLE);
                 AQuery aQuery = new AQuery(getActivity());
                 switch (SOURCE_TYPE) {
                     case 1:

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1095196660854",
+    "firebase_url": "https://hello-tesyi.firebaseio.com",
+    "project_id": "hello-tesyi",
+    "storage_bucket": "hello-tesyi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1095196660854:android:fcb9d9bdd8b8dba1",
+        "android_client_info": {
+          "package_name": "com.instagramdownloader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1095196660854-2fq6pjqe4sh5i3keoqujgs33cva8l32m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkeSfDgUm0U0Rj-hfMkJySwxYNaOMOALA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
