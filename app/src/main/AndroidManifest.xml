@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Main2Activity"
+            android:name=".SplashActivity"
             android:configChanges="orientation"
             android:label="@string/title_activity_main2"
             android:screenOrientation="sensorPortrait"
@@ -26,6 +26,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Main2Activity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_main2"
+            android:screenOrientation="sensorPortrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden"/>
         <!--
         <activity
             android:name=".Main2Activity"
@@ -39,6 +46,8 @@
             android:name=".FullImageActivity"
             android:label="Image"
             android:theme="@style/AppTheme.Translucent">
+        </activity>
+        <activity android:name=".IntroActivity">
         </activity>
     </application>
 
