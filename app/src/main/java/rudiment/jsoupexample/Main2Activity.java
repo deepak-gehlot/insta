@@ -8,9 +8,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import rudiment.jsoupexample.clipboardlistener.ServiceInstaller;
 import rudiment.jsoupexample.fragment.DownloadFragment;
 import rudiment.jsoupexample.fragment.DownloadListFragment;
-import rudiment.jsoupexample.fragment.GuideFragment;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -20,6 +20,7 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ServiceInstaller.installServices(this);
         setContentView(R.layout.activity_main2);
 
         // Create the adapter that will return a fragment for each of the three
@@ -31,8 +32,6 @@ public class Main2Activity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         tabLayout.setupWithViewPager(mViewPager);
-
-        mViewPager.setCurrentItem(1);
     }
 
     /**
@@ -49,13 +48,13 @@ public class Main2Activity extends AppCompatActivity {
         public Fragment getItem(int position) {
             Fragment fragment = null;
             switch (position) {
-                case 0:
+                /*case 0:
                     fragment = GuideFragment.newInstance();
-                    break;
-                case 1:
+                    break;*/
+                case 0:
                     fragment = DownloadFragment.newInstance();
                     break;
-                case 2:
+                case 1:
                     fragment = DownloadListFragment.newInstance();
                     break;
             }
@@ -65,17 +64,17 @@ public class Main2Activity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
+               /* case 0:
+                    return "How To Use";*/
                 case 0:
-                    return "How To Use";
-                case 1:
                     return "Download";
-                case 2:
+                case 1:
                     return "My Download";
             }
             return null;

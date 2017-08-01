@@ -16,6 +16,7 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 
 import rudiment.jsoupexample.FullImageActivity;
+import rudiment.jsoupexample.PhotoFilter2Activity;
 import rudiment.jsoupexample.R;
 import rudiment.jsoupexample.databinding.DownloadListRowBinding;
 
@@ -61,8 +62,10 @@ public class DownloadListAdapter extends RecyclerView.Adapter<DownloadListAdapte
      * @param file
      */
     public void onShareInstaClick(File file) {
-        createInstagramIntent(file);
+        //  createInstagramIntent(file);
         //context.startActivity(new Intent(context, CreateMemesActivity.class).putExtra("file", file));
+        //context.startActivity(new Intent(context, PhotoFileterActivity.class).putExtra("file", file));
+        context.startActivity(new Intent(context, PhotoFilter2Activity.class).putExtra("file", file));
     }
 
     public void onItemClick(File file) {

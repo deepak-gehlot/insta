@@ -55,7 +55,7 @@ public class IntroActivity extends VerticalIntro {
 
     @Override
     protected void onDonePressed() {
-        Intent intent = new Intent(this, IntroActivity.class);
+        Intent intent = new Intent(this, Main2Activity.class);
         startActivity(intent);
         finish();
     }

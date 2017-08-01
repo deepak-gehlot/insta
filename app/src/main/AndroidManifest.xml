@@ -49,6 +49,23 @@
         </activity>
         <activity android:name=".IntroActivity">
         </activity>
+
+        <receiver android:name=".clipboardlistener.BootBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".clipboardlistener.AlarmReceiver">
+        </receiver>
+
+        <service android:name=".clipboardlistener.ClipboardWatcherService"/>
+
+        <activity android:name=".PhotoFileterActivity">
+        </activity>
+        <activity android:name=".PhotoFilter2Activity">
+        </activity>
+        <activity android:name=".InstaFilterActivity">
+        </activity>
     </application>
 
 </manifest>

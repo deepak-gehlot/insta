@@ -1,10 +1,8 @@
 package rudiment.jsoupexample.fragment;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
@@ -12,14 +10,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.URLUtil;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
@@ -27,7 +23,6 @@ import com.github.jksiezni.permissive.PermissionsGrantedListener;
 import com.github.jksiezni.permissive.PermissionsRefusedListener;
 import com.github.jksiezni.permissive.Permissive;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -47,7 +42,6 @@ public class DownloadFragment extends Fragment {
 
     private String url = "";
     FragmentDownloadBinding binding;
-    private int SOURCE_TYPE = 1; // 1 = image, 2 = video
 
     public DownloadFragment() {
         // Required empty public constructor
@@ -74,19 +68,6 @@ public class DownloadFragment extends Fragment {
         binding.adView.loadAd(adRequest);
         binding.adView2.loadAd(adRequest);
 
-        binding.selectionGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-                switch (i) {
-                    case R.id.imageUrlRB:
-                        SOURCE_TYPE = 1;
-                        break;
-                    case R.id.videoUrlRB:
-                        SOURCE_TYPE = 2;
-                        break;
-                }
-            }
-        });
     }
 
     public void onDownloadBtnClick() {
@@ -121,29 +102,7 @@ public class DownloadFragment extends Fragment {
     public void loadUrl() {
         final String url = binding.urlEdt.getText().toString().trim();
         if (!url.isEmpty() && URLUtil.isValidUrl(url)) {
-            String msg = "";
-            if (SOURCE_TYPE == 1) {
-                msg = "Do you want to download image?";
-            } else {
-                msg = "Do you want to download video?";
-            }
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle("");
-            builder.setMessage(msg);
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                }
-            });
-            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                    new Task().execute(url);
-                }
-            });
-            builder.create().show();
+            new Task().execute(url);
         } else {
             Toast.makeText(getActivity(), "Paste share url", Toast.LENGTH_SHORT).show();
         }
@@ -216,15 +175,13 @@ public class DownloadFragment extends Fragment {
                 binding.adView2.setVisibility(View.GONE);
                 binding.imageView.setVisibility(View.VISIBLE);
                 AQuery aQuery = new AQuery(getActivity());
-                switch (SOURCE_TYPE) {
-                    case 1:
-                        url = aVoid.get(0);
-                        aQuery.id(binding.imageView).progress(binding.progress).image(aVoid.get(0), true, true, 0, R.drawable.ic_placeholder_600x400);
-                        break;
-                    case 2:
-                        url = aVoid.get(1);
-                        aQuery.id(binding.imageView).progress(binding.progress).image(aVoid.get(0), true, true, 0, R.drawable.ic_placeholder_600x400);
-                        break;
+
+                if (aVoid.size() == 1) { // image url
+                    url = aVoid.get(0);
+                    aQuery.id(binding.imageView).progress(binding.progress).image(aVoid.get(0), true, true, 0, R.drawable.ic_placeholder_600x400);
+                } else if (aVoid.size() == 2) { // video url
+                    url = aVoid.get(1);
+                    aQuery.id(binding.imageView).progress(binding.progress).image(aVoid.get(0), true, true, 0, R.drawable.ic_placeholder_600x400);
                 }
             } else {
                 Toast.makeText(getActivity(), "Invalid Url.", Toast.LENGTH_SHORT).show();
@@ -238,7 +195,7 @@ public class DownloadFragment extends Fragment {
             Document doc = Jsoup.connect(url).get();
             String imageUrl = "";
             Elements meta = null;
-            if (SOURCE_TYPE == 1) {
+            /*if (SOURCE_TYPE == 1) {
                 meta = doc.select("meta[property=og:image]");
                 imageUrl = meta.attr("content");
                 images.add(imageUrl);
@@ -249,7 +206,20 @@ public class DownloadFragment extends Fragment {
                 imageUrl = meta.attr("content");
                 images.add(imageUrl1);
                 images.add(imageUrl);
+            }*/
+
+            Elements meta1 = doc.select("meta[property=og:image]");
+            meta = doc.select("meta[property=og:video]");
+
+            if (meta1 != null && meta1.size() != 0) {
+                String imageUrl1 = meta1.attr("content");
+                images.add(imageUrl1);
             }
+            if (meta != null && meta.size() != 0) {
+                imageUrl = meta.attr("content");
+                images.add(imageUrl);
+            }
+
             return images;
         } catch (IOException e) {
             e.printStackTrace();
