@@ -28,6 +28,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -37,6 +38,7 @@ import rudiment.jsoupexample.databinding.FragmentDownloadBinding;
 import rudiment.jsoupexample.util.Clipboard_Utils;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
+import static android.os.Environment.DIRECTORY_PICTURES;
 
 public class DownloadFragment extends Fragment {
 
@@ -81,7 +83,8 @@ public class DownloadFragment extends Fragment {
                             DownloadManager.Request request = new DownloadManager.Request(
                                     Uri.parse(url));
                             String fileName = URLUtil.guessFileName(url, null, null);
-                            request.setDestinationInExternalPublicDir("/dJsonoup", fileName);
+                            request.setDestinationInExternalPublicDir(DIRECTORY_PICTURES,
+                                    File.separator + "dJsonoup" + File.separator + fileName);
                             dm.enqueue(request);
                             Toast.makeText(getActivity(), "Downloading start.", Toast.LENGTH_SHORT).show();
                         } else {

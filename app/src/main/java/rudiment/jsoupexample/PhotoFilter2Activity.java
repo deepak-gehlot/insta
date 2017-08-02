@@ -18,6 +18,7 @@ import java.util.List;
 
 import rudiment.jsoupexample.adapter.ThumbnailsAdapter2;
 import rudiment.jsoupexample.databinding.ActivityPhotoFilter2Binding;
+import rudiment.jsoupexample.imageprocessinghelper.GPUImageFilterTools;
 import rudiment.jsoupexample.imageprocessinghelper.ThumbnailCallback;
 import rudiment.jsoupexample.imageprocessinghelper.ThumbnailItem2;
 import rudiment.jsoupexample.imageprocessinghelper.ThumbnailsManager2;
@@ -173,6 +174,11 @@ public class PhotoFilter2Activity extends AppCompatActivity implements Thumbnail
 
     @Override
     public void onThumbnailClick(Filter filter) {
+
+    }
+
+    @Override
+    public void onThumbnailClick(GPUImageFilterTools.FilterType filter) {
 
     }
 

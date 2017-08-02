@@ -19,6 +19,7 @@ import java.util.List;
 
 import rudiment.jsoupexample.adapter.ThumbnailsAdapter;
 import rudiment.jsoupexample.databinding.ActivityPhotoFileterBinding;
+import rudiment.jsoupexample.imageprocessinghelper.GPUImageFilterTools;
 import rudiment.jsoupexample.imageprocessinghelper.ThumbnailCallback;
 import rudiment.jsoupexample.imageprocessinghelper.ThumbnailItem;
 import rudiment.jsoupexample.imageprocessinghelper.ThumbnailsManager;
@@ -46,7 +47,7 @@ public class PhotoFileterActivity extends AppCompatActivity implements Thumbnail
         } else {
             finish();
         }
-        binding.placeHolderImageview.setImageBitmap(bitmap1);
+        binding.placeHolderImageview.setImageBitmap(bitmap);
         initHorizontalList();
     }
 
@@ -112,6 +113,11 @@ public class PhotoFileterActivity extends AppCompatActivity implements Thumbnail
 
     @Override
     public void onThumbnailClick(ImageFilter.Filter filter) {
+
+    }
+
+    @Override
+    public void onThumbnailClick(GPUImageFilterTools.FilterType filter) {
 
     }
 

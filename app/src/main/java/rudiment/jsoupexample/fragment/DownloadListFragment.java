@@ -64,7 +64,7 @@ public class DownloadListFragment extends Fragment implements SwipeRefreshLayout
                         // given permissions are granted
                         ArrayList<File> result = new ArrayList<>(); //ArrayList cause you don't know how many files there is
                         try {
-                            File folder = new File(Environment.getExternalStorageDirectory() + "/dJsonoup"); //This is just to cast to a File type since you pass it as a String
+                            File folder = new File(Environment.getExternalStorageDirectory() + "/Pictures/dJsonoup"); //This is just to cast to a File type since you pass it as a String
                             File[] filesInFolder = folder.listFiles(); // This returns all the folders and files in your path
                             for (File file : filesInFolder) { //For each of the entries do:
                                 if (!file.isDirectory()) { //check that it's not a dir

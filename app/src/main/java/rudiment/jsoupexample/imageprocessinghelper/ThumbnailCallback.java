@@ -10,5 +10,8 @@ import net.alhazmy13.imagefilter.ImageFilter;
 public interface ThumbnailCallback {
 
     void onThumbnailClick(Filter filter);
+
     void onThumbnailClick(ImageFilter.Filter filter);
+
+    void onThumbnailClick(GPUImageFilterTools.FilterType filter);
 }

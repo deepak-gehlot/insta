@@ -66,6 +66,10 @@
         </activity>
         <activity android:name=".InstaFilterActivity">
         </activity>
+        <activity android:name=".CollageActivity">
+        </activity>
+        <activity android:name=".PhotoFileterActivity2">
+        </activity>
     </application>
 
 </manifest>

@@ -15,8 +15,9 @@ import java.io.File;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
+import rudiment.jsoupexample.CreateMemesActivity;
 import rudiment.jsoupexample.FullImageActivity;
-import rudiment.jsoupexample.PhotoFilter2Activity;
+import rudiment.jsoupexample.PhotoFileterActivity2;
 import rudiment.jsoupexample.R;
 import rudiment.jsoupexample.databinding.DownloadListRowBinding;
 
@@ -56,6 +57,10 @@ public class DownloadListAdapter extends RecyclerView.Adapter<DownloadListAdapte
         return mimeType != null && mimeType.startsWith("video");
     }
 
+    public void onFilterClick(File file) {
+        context.startActivity(new Intent(context, PhotoFileterActivity2.class).putExtra("file", file));
+    }
+
     /**
      * on Item click listener method
      *
@@ -63,9 +68,11 @@ public class DownloadListAdapter extends RecyclerView.Adapter<DownloadListAdapte
      */
     public void onShareInstaClick(File file) {
         //  createInstagramIntent(file);
-        //context.startActivity(new Intent(context, CreateMemesActivity.class).putExtra("file", file));
-        //context.startActivity(new Intent(context, PhotoFileterActivity.class).putExtra("file", file));
-        context.startActivity(new Intent(context, PhotoFilter2Activity.class).putExtra("file", file));
+        context.startActivity(new Intent(context, CreateMemesActivity.class).putExtra("file", file));
+        // context.startActivity(new Intent(context, PhotoFileterActivity.class).putExtra("file", file));
+        //context.startActivity(new Intent(context, PhotoFileterActivity2.class).putExtra("file", file));
+        //  context.startActivity(new Intent(context, PhotoFilter2Activity.class).putExtra("file", file));
+        //context.startActivity(new Intent(context, CollageActivity.class));
     }
 
     public void onItemClick(File file) {
