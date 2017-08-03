@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@color/colorAccent">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/thumbnail"
         android:layout_width="@dimen/thumbnail_size"
         android:layout_height="@dimen/thumbnail_size"

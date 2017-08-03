@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +20,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageView;
 import rudiment.jsoupexample.adapter.ThumbnailsAdapter3;
@@ -37,6 +37,7 @@ public class PhotoFileterActivity2 extends AppCompatActivity implements SeekBar.
     private Uri imageUri = null;
     private File imageFile = null;
     private RecyclerView filterListView;
+    private List<ThumbnailItem3> thumbs = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,8 +92,8 @@ public class PhotoFileterActivity2 extends AppCompatActivity implements SeekBar.
 
     private void bindDataToAdapter() {
         final Context context = this.getApplication();
-        Handler handler = new Handler();
-        Runnable r = new Runnable() {
+        new Thread(new Runnable() {
+            @Override
             public void run() {
                 ThumbnailItem3 t1 = new ThumbnailItem3();
                 ThumbnailItem3 t2 = new ThumbnailItem3();
@@ -100,45 +101,88 @@ public class PhotoFileterActivity2 extends AppCompatActivity implements SeekBar.
                 ThumbnailItem3 t4 = new ThumbnailItem3();
                 ThumbnailItem3 t5 = new ThumbnailItem3();
                 ThumbnailItem3 t6 = new ThumbnailItem3();
+                ThumbnailItem3 t7 = new ThumbnailItem3();
+                ThumbnailItem3 t8 = new ThumbnailItem3();
+                ThumbnailItem3 t9 = new ThumbnailItem3();
+                ThumbnailItem3 t10 = new ThumbnailItem3();
+                ThumbnailItem3 t11 = new ThumbnailItem3();
+                ThumbnailItem3 t12 = new ThumbnailItem3();
+                ThumbnailItem3 t13 = new ThumbnailItem3();
+                ThumbnailItem3 t14 = new ThumbnailItem3();
+                ThumbnailItem3 t15 = new ThumbnailItem3();
 
-                t1.image = imageUri;
-                t1.imageFile = imageFile;
+                t1.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.CONTRAST);
                 t1.filter = GPUImageFilterTools.FilterType.CONTRAST;
 
-                t2.image = imageUri;
-                t2.imageFile = imageFile;
+                t2.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.GRAYSCALE);
                 t2.filter = GPUImageFilterTools.FilterType.GRAYSCALE;
 
-                t3.image = imageUri;
-                t3.imageFile = imageFile;
+                t3.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.SHARPEN);
                 t3.filter = GPUImageFilterTools.FilterType.SHARPEN;
 
-                t4.image = imageUri;
-                t4.imageFile = imageFile;
+                t4.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.SEPIA);
                 t4.filter = GPUImageFilterTools.FilterType.SEPIA;
 
-                t5.image = imageUri;
-                t5.imageFile = imageFile;
+                t5.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.SOBEL_EDGE_DETECTION);
                 t5.filter = GPUImageFilterTools.FilterType.SOBEL_EDGE_DETECTION;
 
-                t6.image = imageUri;
-                t6.imageFile = imageFile;
+                t6.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.THREE_X_THREE_CONVOLUTION);
                 t6.filter = GPUImageFilterTools.FilterType.THREE_X_THREE_CONVOLUTION;
 
-                List<ThumbnailItem3> thumbs = new ArrayList<>();
+                t7.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.FILTER_GROUP);
+                t7.filter = GPUImageFilterTools.FilterType.FILTER_GROUP;
+
+                t8.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.EMBOSS);
+                t8.filter = GPUImageFilterTools.FilterType.EMBOSS;
+
+                t9.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.POSTERIZE);
+                t9.filter = GPUImageFilterTools.FilterType.POSTERIZE;
+
+                t10.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.GAMMA);
+                t10.filter = GPUImageFilterTools.FilterType.GAMMA;
+
+                t11.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.BRIGHTNESS);
+                t11.filter = GPUImageFilterTools.FilterType.BRIGHTNESS;
+
+                t12.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.INVERT);
+                t12.filter = GPUImageFilterTools.FilterType.INVERT;
+
+                t13.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.HUE);
+                t13.filter = GPUImageFilterTools.FilterType.HUE;
+
+                t14.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.PIXELATION);
+                t14.filter = GPUImageFilterTools.FilterType.PIXELATION;
+
+                t15.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.SATURATION);
+                t15.filter = GPUImageFilterTools.FilterType.SATURATION;
+
+                thumbs = new ArrayList<>();
                 thumbs.add(t1);
                 thumbs.add(t2);
                 thumbs.add(t3);
                 thumbs.add(t4);
                 thumbs.add(t5);
                 thumbs.add(t6);
+                thumbs.add(t7);
+                thumbs.add(t8);
+                thumbs.add(t9);
+                thumbs.add(t10);
+                thumbs.add(t11);
+                thumbs.add(t12);
+                thumbs.add(t13);
+                thumbs.add(t14);
+                thumbs.add(t15);
 
-                ThumbnailsAdapter3 adapter = new ThumbnailsAdapter3(PhotoFileterActivity2.this, thumbs, (ThumbnailCallback) PhotoFileterActivity2.this);
-                filterListView.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ThumbnailsAdapter3 adapter = new ThumbnailsAdapter3(PhotoFileterActivity2.this, thumbs, (ThumbnailCallback) PhotoFileterActivity2.this);
+                        filterListView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
             }
-        };
-        handler.post(r);
+        }).start();
     }
 
     private void saveImage() {
@@ -198,7 +242,15 @@ public class PhotoFileterActivity2 extends AppCompatActivity implements SeekBar.
     private Bitmap getBitmapFromFile(File file) {
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
         Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), bmOptions);
-        bitmap = Bitmap.createScaledBitmap(bitmap, 640, 640, false);
+        bitmap = Bitmap.createScaledBitmap(bitmap, 120, 120, false);
         return bitmap;
+    }
+
+    private Bitmap getFilterThumbBitmap(Context context, GPUImageFilterTools.FilterType filterType) {
+        GPUImage gpuImage = new GPUImage(context);
+        gpuImage.setImage(getBitmapFromFile(imageFile));
+        gpuImage.setFilter(GPUImageFilterTools.createFilterForType(context, filterType));
+        gpuImage.requestRender();
+        return gpuImage.getBitmapWithFilterApplied();
     }
 }

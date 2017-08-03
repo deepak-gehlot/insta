@@ -13,9 +13,7 @@ import android.widget.ImageView;
 import java.io.File;
 import java.util.List;
 
-import jp.co.cyberagent.android.gpuimage.GPUImage;
 import rudiment.jsoupexample.R;
-import rudiment.jsoupexample.imageprocessinghelper.GPUImageFilterTools;
 import rudiment.jsoupexample.imageprocessinghelper.ThumbnailCallback;
 import rudiment.jsoupexample.imageprocessinghelper.ThumbnailItem3;
 
@@ -45,18 +43,8 @@ public class ThumbnailsAdapter3 extends RecyclerView.Adapter<RecyclerView.ViewHo
         final ThumbnailItem3 thumbnailItem = dataSet.get(i);
         Log.v(TAG, "On Bind View Called");
         ThumbnailsViewHolder thumbnailsViewHolder = (ThumbnailsViewHolder) holder;
-
-        GPUImage gpuImage = new GPUImage(context);
-        gpuImage.setImage(thumbnailItem.image);
-        gpuImage.setFilter(GPUImageFilterTools.createFilterForType(context, thumbnailItem.filter));
-        gpuImage.requestRender();
-        Bitmap bitmap = null;
         try {
-            Bitmap bitmap1 = getBitmapFromFile(thumbnailItem.imageFile);
-            bitmap = gpuImage.getBitmapWithFilterApplied(bitmap1);
-
-            thumbnailsViewHolder.thumbnail.setImageBitmap(bitmap);
-
+            thumbnailsViewHolder.thumbnail.setImageBitmap(thumbnailItem.image);
             thumbnailsViewHolder.thumbnail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -85,6 +73,7 @@ public class ThumbnailsAdapter3 extends RecyclerView.Adapter<RecyclerView.ViewHo
             this.thumbnail = (ImageView) v.findViewById(R.id.thumbnail);
         }
     }
+
     private Bitmap getBitmapFromFile(File file) {
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
         Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), bmOptions);

@@ -16,7 +16,6 @@
         <activity
             android:name=".SplashActivity"
             android:configChanges="orientation"
-            android:label="@string/title_activity_main2"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden">
