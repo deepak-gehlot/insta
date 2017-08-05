@@ -1,16 +1,13 @@
 package rudiment.jsoupexample.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import java.io.File;
 import java.util.List;
 
 import rudiment.jsoupexample.R;
@@ -25,7 +22,6 @@ public class ThumbnailsAdapter3 extends RecyclerView.Adapter<RecyclerView.ViewHo
     private Context context;
 
     public ThumbnailsAdapter3(Context context, List<ThumbnailItem3> dataSet, ThumbnailCallback thumbnailCallback) {
-        Log.v(TAG, "Thumbnails Adapter has " + dataSet.size() + " items");
         this.dataSet = dataSet;
         this.thumbnailCallback = thumbnailCallback;
         this.context = context;
@@ -33,16 +29,14 @@ public class ThumbnailsAdapter3 extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        Log.v(TAG, "On Create View Holder Called");
-        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_thumbnail_item, viewGroup, false);
-        return new ThumbnailsViewHolder(itemView);
+        return new ThumbnailsViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_thumbnail_item, viewGroup, false));
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int i) {
         final ThumbnailItem3 thumbnailItem = dataSet.get(i);
-        Log.v(TAG, "On Bind View Called");
         ThumbnailsViewHolder thumbnailsViewHolder = (ThumbnailsViewHolder) holder;
+        thumbnailsViewHolder.titleTxt.setText(thumbnailItem.title);
         try {
             thumbnailsViewHolder.thumbnail.setImageBitmap(thumbnailItem.image);
             thumbnailsViewHolder.thumbnail.setOnClickListener(new View.OnClickListener() {
@@ -66,18 +60,14 @@ public class ThumbnailsAdapter3 extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     public static class ThumbnailsViewHolder extends RecyclerView.ViewHolder {
+
         public ImageView thumbnail;
+        private TextView titleTxt;
 
         public ThumbnailsViewHolder(View v) {
             super(v);
             this.thumbnail = (ImageView) v.findViewById(R.id.thumbnail);
+            this.titleTxt = (TextView) v.findViewById(R.id.title);
         }
-    }
-
-    private Bitmap getBitmapFromFile(File file) {
-        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-        Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), bmOptions);
-        bitmap = Bitmap.createScaledBitmap(bitmap, 640, 640, false);
-        return bitmap;
     }
 }

@@ -12,28 +12,32 @@ public class IntroActivity extends VerticalIntro {
     protected void init() {
         addIntroItem(new VerticalIntroItem.Builder()
                 .backgroundColor(R.color.colorAccent)
-                .image(R.drawable.ic_image)
-                .title("Lorem Ipsum Lorem Ipsum")
-                .text("Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.")
+                .image(R.drawable.ic_5932)
+                .title("Step 1")
+                .text("Open Download Insta app.")
                 .textSize(14)
                 .titleSize(17)
                 .build());
 
         addIntroItem(new VerticalIntroItem.Builder()
                 .backgroundColor(R.color.colorPrimaryDark)
-                .image(R.drawable.ic_image)
-                .title("Lorem Ipsum Lorem Ipsum ")
-                .text("Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.")
+                .image(R.drawable.ic_2259)
+                .title("Step 2")
+                .text("Minimize App and Open Instagram.")
                 .build());
 
         addIntroItem(new VerticalIntroItem.Builder()
                 .backgroundColor(R.color.colorPrimary)
-                .image(R.drawable.ic_image)
-                .title("Lorem Ipsum")
-                .text("Lorem Ipsum is simply dummy text of the printing and typesetting industry.")
+                .image(R.drawable.ic_8930)
+                .title("Step 3")
+                .text("Click on Three Dot option icon.")
+                .build());
+
+        addIntroItem(new VerticalIntroItem.Builder()
+                .backgroundColor(R.color.colorAccent)
+                .image(R.drawable.ic_8930)
+                .title("Step 2")
+                .text("Click on copy share Url, Download will start in background.")
                 .build());
 
     }

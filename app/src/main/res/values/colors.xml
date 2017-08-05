@@ -8,5 +8,5 @@
     <color name="gray">#868686</color>
     <color name="gray_light">#fffafc</color>
     <color name="gray_dark">#c7c7c7</color>
-    <color name="transparent_black_2">#6f737373</color>
+    <color name="transparent_black_2">#6f000000</color>
 </resources>

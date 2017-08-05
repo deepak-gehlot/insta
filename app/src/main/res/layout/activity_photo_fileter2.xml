@@ -2,32 +2,66 @@
 
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="#000000"
               android:orientation="vertical">
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <jp.co.cyberagent.android.gpuimage.GPUImageView
-            android:id="@+id/gpuimage"
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            android:layout_centerHorizontal="true"
+            ads:adSize="SMART_BANNER"
+            ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+        </com.google.android.gms.ads.AdView>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/adView"
+            >
+
+            <jp.co.cyberagent.android.gpuimage.GPUImageView
+                android:id="@+id/gpuimage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+        </FrameLayout>
 
         <SeekBar
             android:id="@+id/seekBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_margin="16dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_toStartOf="@+id/button_save"
             android:max="100"/>
-    </FrameLayout>
 
-    <LinearLayout
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/button_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:cropToPadding="true"
+            android:src="@drawable/ic_save"
+            app:useCompatPadding="true"/>
+
+    </RelativeLayout>
+
+    <!--<LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
@@ -39,15 +73,15 @@
             android:text="Choose filter"/>
 
         <Button
-            android:id="@+id/button_save"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Save"/>
-    </LinearLayout>
+    </LinearLayout>-->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/filterListView"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/colorAccent"/>
+        android:layout_height="85dp"
+        android:background="@color/gray"/>
 </LinearLayout>

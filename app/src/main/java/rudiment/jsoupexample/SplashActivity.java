@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import rudiment.jsoupexample.util.PreferenceConnector;
+
 public class SplashActivity extends AppCompatActivity {
 
     Handler handler;
@@ -33,8 +35,8 @@ public class SplashActivity extends AppCompatActivity {
         handler.sendMessageDelayed(msg, SPLASHTIME);
     }
 
-    private void switchActivityToLogin() {
-        Intent intent = new Intent(this, IntroActivity.class);
+    private void switchActivity(Class aClass) {
+        Intent intent = new Intent(this, aClass);
         startActivity(intent);
         finish();
     }
@@ -57,7 +59,12 @@ public class SplashActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            switchActivityToLogin();
+                            if (PreferenceConnector.readBoolean(SplashActivity.this, PreferenceConnector.IS_FIRST_TIME, false)) {
+                                switchActivity(Main2Activity.class);
+                                PreferenceConnector.writeBoolean(SplashActivity.this, PreferenceConnector.IS_FIRST_TIME, true);
+                            } else {
+                                switchActivity(IntroActivity.class);
+                            }
                         }
                     });
                 }

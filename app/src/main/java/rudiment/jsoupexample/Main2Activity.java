@@ -75,7 +75,7 @@ public class Main2Activity extends AppCompatActivity {
                 case 0:
                     return "Download";
                 case 1:
-                    return "My Download";
+                    return "My Downloads";
             }
             return null;
         }

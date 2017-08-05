@@ -20,9 +20,14 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import rudiment.jsoupexample.util.Constant;
+
+import static android.os.Environment.DIRECTORY_PICTURES;
 
 public class ClipboardWatcherService extends Service {
 
@@ -85,7 +90,6 @@ public class ClipboardWatcherService extends Service {
                     @Override
                     public void run() {
                         new Task().execute(clipboard);
-                        Toast.makeText(ClipboardWatcherService.this, "" + clipboard, Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -99,9 +103,10 @@ public class ClipboardWatcherService extends Service {
             DownloadManager.Request request = new DownloadManager.Request(
                     Uri.parse(url));
             String fileName = URLUtil.guessFileName(url, null, null);
-            request.setDestinationInExternalPublicDir("/dJsonoup", fileName);
+            request.setDestinationInExternalPublicDir(DIRECTORY_PICTURES,
+                    File.separator + Constant.FOLDER_NAME + File.separator + fileName);
             dm.enqueue(request);
-            Toast.makeText(ClipboardWatcherService.this, "Downloading start.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ClipboardWatcherService.this, "Downloading started.", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(ClipboardWatcherService.this, "Paste Url.", Toast.LENGTH_SHORT).show();
         }

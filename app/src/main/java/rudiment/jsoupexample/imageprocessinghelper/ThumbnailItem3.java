@@ -9,9 +9,11 @@ public class ThumbnailItem3 {
 
     public Bitmap image;
     public GPUImageFilterTools.FilterType filter;
+    public String title;
 
     public ThumbnailItem3() {
         image = null;
         filter = null;
+        title = "";
     }
 }

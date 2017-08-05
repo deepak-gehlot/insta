@@ -36,6 +36,7 @@ import rudiment.jsoupexample.R;
 import rudiment.jsoupexample.Util;
 import rudiment.jsoupexample.databinding.FragmentDownloadBinding;
 import rudiment.jsoupexample.util.Clipboard_Utils;
+import rudiment.jsoupexample.util.Constant;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
 import static android.os.Environment.DIRECTORY_PICTURES;
@@ -69,7 +70,6 @@ public class DownloadFragment extends Fragment {
         AdRequest adRequest = new AdRequest.Builder().build();
         binding.adView.loadAd(adRequest);
         binding.adView2.loadAd(adRequest);
-
     }
 
     public void onDownloadBtnClick() {
@@ -84,9 +84,9 @@ public class DownloadFragment extends Fragment {
                                     Uri.parse(url));
                             String fileName = URLUtil.guessFileName(url, null, null);
                             request.setDestinationInExternalPublicDir(DIRECTORY_PICTURES,
-                                    File.separator + "dJsonoup" + File.separator + fileName);
+                                    File.separator + Constant.FOLDER_NAME + File.separator + fileName);
                             dm.enqueue(request);
-                            Toast.makeText(getActivity(), "Downloading start.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Downloading started.", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getActivity(), "Paste Url.", Toast.LENGTH_SHORT).show();
                         }

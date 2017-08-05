@@ -1,4 +1,5 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
@@ -11,7 +12,7 @@
             android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/ad">
+            android:layout_above="@+id/adView">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerView"
@@ -20,12 +21,40 @@
                 />
         </android.support.v4.widget.SwipeRefreshLayout>
 
-        <View
-            android:id="@+id/ad"
+        <TextView
+            android:id="@+id/messageTxt"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:text="No Downloads"
+            android:textColor="@color/colorAccent"
+            android:textSize="25sp"
+            android:textStyle="italic"
+            android:visibility="gone"/>
+
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/gray_dark"/>
+            android:layout_centerHorizontal="true"
+            ads:adSize="SMART_BANNER"
+            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"/>
+
+        <com.joaquimley.faboptions.FabOptions
+            android:id="@+id/fab_options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/adView"
+            android:layout_centerHorizontal="true"
+            app:elevation="16dp"
+            android:layout_gravity="bottom"
+            app:background_color="@color/colorPrimary"
+            app:button_menu="@menu/menu_main2"
+            app:fab_color="@color/colorAccent"/>
 
     </RelativeLayout>
 </layout>
