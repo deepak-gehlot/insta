@@ -1,6 +1,7 @@
 package rudiment.jsoupexample;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.view.View;
 
 import com.luseen.verticalintrolibrary.VerticalIntro;
@@ -14,33 +15,53 @@ public class IntroActivity extends VerticalIntro {
                 .backgroundColor(R.color.colorAccent)
                 .image(R.drawable.ic_5932)
                 .title("Step 1")
-                .text("Open Download Insta app.")
-                .textSize(14)
-                .titleSize(17)
+                .text("Open Download Insta app." +
+                        "\n" +
+                        "\n" +
+                        "\n")
+                .textSize(20)
+                .titleSize(30)
                 .build());
 
         addIntroItem(new VerticalIntroItem.Builder()
                 .backgroundColor(R.color.colorPrimaryDark)
                 .image(R.drawable.ic_2259)
                 .title("Step 2")
-                .text("Minimize App and Open Instagram.")
+                .text("Minimize App and Open Instagram." +
+                        "\n" +
+                        "\n" +
+                        "\n" )
+                .textSize(20)
+                .titleSize(30)
                 .build());
 
         addIntroItem(new VerticalIntroItem.Builder()
                 .backgroundColor(R.color.colorPrimary)
                 .image(R.drawable.ic_8930)
                 .title("Step 3")
-                .text("Click on Three Dot option icon.")
+                .text("Click on Three Dot option icon." +
+                        "\n" +
+                        "\n" +
+                        "\n")
+                .textSize(20)
+                .titleSize(30)
                 .build());
 
         addIntroItem(new VerticalIntroItem.Builder()
                 .backgroundColor(R.color.colorAccent)
                 .image(R.drawable.ic_8930)
                 .title("Step 2")
-                .text("Click on copy share Url, Download will start in background.")
+                .text("Click on copy share Url, Download will start in background." +
+                        "\n" +
+                        "\n" +
+                        "\n     ")
+                .textSize(20)
+                .titleSize(30)
                 .build());
 
+        setCustomTypeFace(Typeface.createFromAsset(getAssets(), "fonts/TypeType.otf"));
     }
+
 
     @Override
     protected Integer setLastItemBottomViewColor() {

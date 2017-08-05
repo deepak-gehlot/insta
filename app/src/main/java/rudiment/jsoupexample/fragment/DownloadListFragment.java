@@ -57,8 +57,6 @@ public class DownloadListFragment extends Fragment implements SwipeRefreshLayout
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getListOfFiles();
-
         binding.swipeRefreshLayout.setOnRefreshListener(this);
         binding.fabOptions.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +79,14 @@ public class DownloadListFragment extends Fragment implements SwipeRefreshLayout
     @Override
     public void onRefresh() {
         getListOfFiles();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getView() != null) {
+            getListOfFiles();
+        }
     }
 
     private void getListOfFiles() {
@@ -121,7 +127,7 @@ public class DownloadListFragment extends Fragment implements SwipeRefreshLayout
         binding.recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         DownloadListAdapter adapter = new DownloadListAdapter(getActivity(), files);
         binding.recyclerView.setAdapter(adapter);
-        if (files.size() == 0) {
+        if (files.size() == 1) {
             binding.messageTxt.setVisibility(View.VISIBLE);
         }
     }
