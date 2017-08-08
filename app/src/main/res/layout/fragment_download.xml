@@ -90,7 +90,7 @@
                         android:layout_above="@+id/divider"
                         android:layout_centerHorizontal="true"
                         ads:adSize="MEDIUM_RECTANGLE"
-                        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+                        ads:adUnitId="@string/ad_key">
                     </com.google.android.gms.ads.AdView>
 
                     <View
@@ -149,7 +149,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             ads:adSize="SMART_BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+            ads:adUnitId="@string/ad_key">
         </com.google.android.gms.ads.AdView>
     </RelativeLayout>
 </layout>

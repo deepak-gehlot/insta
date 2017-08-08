@@ -72,7 +72,7 @@ public class DownloadListFragment extends Fragment implements SwipeRefreshLayout
             }
         });
 
-        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("6EF78ADD2A651B27934562EFF2ADF942").build();
         binding.adView.loadAd(adRequest);
     }
 

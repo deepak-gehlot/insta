@@ -31,6 +31,7 @@ import rudiment.jsoupexample.adapter.ThumbnailsAdapter3;
 import rudiment.jsoupexample.imageprocessinghelper.GPUImageFilterTools;
 import rudiment.jsoupexample.imageprocessinghelper.ThumbnailCallback;
 import rudiment.jsoupexample.imageprocessinghelper.ThumbnailItem3;
+import rudiment.jsoupexample.util.Constant;
 
 public class PhotoFileterActivity2 extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener,
         View.OnClickListener, GPUImageView.OnPictureSavedListener, ThumbnailCallback {
@@ -307,7 +308,7 @@ public class PhotoFileterActivity2 extends AppCompatActivity implements SeekBar.
 
     private void saveImage() {
         String fileName = System.currentTimeMillis() + ".jpg";
-        mGPUImageView.saveToPictures("dJsonoup", fileName, this);
+        mGPUImageView.saveToPictures(Constant.FOLDER_NAME, fileName, this);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

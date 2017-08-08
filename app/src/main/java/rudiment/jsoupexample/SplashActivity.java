@@ -64,6 +64,7 @@ public class SplashActivity extends AppCompatActivity {
                                 PreferenceConnector.writeBoolean(SplashActivity.this, PreferenceConnector.IS_FIRST_TIME, true);
                             } else {
                                 switchActivity(IntroActivity.class);
+                                PreferenceConnector.writeBoolean(SplashActivity.this, PreferenceConnector.IS_FIRST_TIME, true);
                             }
                         }
                     });

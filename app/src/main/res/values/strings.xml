@@ -6,4 +6,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ad_key">ca-app-pub-8677331021062535/3417044997</string>
 </resources>
