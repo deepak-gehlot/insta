@@ -13,9 +13,9 @@ public class IntroActivity extends VerticalIntro {
     protected void init() {
         addIntroItem(new VerticalIntroItem.Builder()
                 .backgroundColor(R.color.colorAccent)
-                .image(R.drawable.ic_5932)
+                .image(R.drawable.web_hi_res_512)
                 .title("Step 1")
-                .text("Open Download Insta app." +
+                .text("Open DownloadInsta app." +
                         "\n" +
                         "\n" +
                         "\n")
@@ -27,7 +27,7 @@ public class IntroActivity extends VerticalIntro {
                 .backgroundColor(R.color.colorPrimaryDark)
                 .image(R.drawable.ic_2259)
                 .title("Step 2")
-                .text("Minimize App and Open Instagram." +
+                .text("Minimize DownloadInsta App and Open Instagram." +
                         "\n" +
                         "\n" +
                         "\n" )
@@ -50,7 +50,7 @@ public class IntroActivity extends VerticalIntro {
         addIntroItem(new VerticalIntroItem.Builder()
                 .backgroundColor(R.color.colorAccent)
                 .image(R.drawable.ic_8930)
-                .title("Step 2")
+                .title("Step 4")
                 .text("Click on copy share Url, Download will start in background." +
                         "\n" +
                         "\n" +

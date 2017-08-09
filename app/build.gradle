@@ -60,7 +60,6 @@ dependencies {
     compile 'com.google.firebase:firebase-ads:11.0.2'
     compile 'com.google.firebase:firebase-core:11.0.2'
     compile 'com.github.armcha:Vertical-Intro:2.0.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.github.zomato:androidphotofilters:1.0.1'
     compile 'net.alhazmy13.ImageFilters:library:0.1.2-beta'
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
