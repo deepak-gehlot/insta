@@ -50,10 +50,10 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/adView"
             android:layout_centerHorizontal="true"
-            app:elevation="16dp"
             android:layout_gravity="bottom"
             app:background_color="@color/colorPrimary"
             app:button_menu="@menu/menu_main2"
+            app:elevation="16dp"
             app:fab_color="@color/colorAccent"/>
 
     </RelativeLayout>

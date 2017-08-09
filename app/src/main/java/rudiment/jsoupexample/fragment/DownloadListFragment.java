@@ -129,6 +129,8 @@ public class DownloadListFragment extends Fragment implements SwipeRefreshLayout
         binding.recyclerView.setAdapter(adapter);
         if (files.size() == 1) {
             binding.messageTxt.setVisibility(View.VISIBLE);
+        } else {
+            binding.messageTxt.setVisibility(View.GONE);
         }
     }
 

@@ -86,12 +86,14 @@ public class ClipboardWatcherService extends Service {
                 final String clipboard = cd.getItemAt(0).getText().toString();
                 log.append(clipboard);
                 log.append("\n\n");
-                new Handler(Looper.getMainLooper()).post(new Runnable() {
-                    @Override
-                    public void run() {
-                        new Task().execute(clipboard);
-                    }
-                });
+                if (clipboard.contains("https://www.instagram.com/p/")) {
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            new Task().execute(clipboard);
+                        }
+                    });
+                }
             }
         }
     }

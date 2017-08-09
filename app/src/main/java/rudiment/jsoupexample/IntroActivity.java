@@ -25,19 +25,19 @@ public class IntroActivity extends VerticalIntro {
 
         addIntroItem(new VerticalIntroItem.Builder()
                 .backgroundColor(R.color.colorPrimaryDark)
-                .image(R.drawable.ic_2259)
+                .image(R.drawable.android_home_button)
                 .title("Step 2")
                 .text("Minimize DownloadInsta App and Open Instagram." +
                         "\n" +
                         "\n" +
-                        "\n" )
+                        "\n")
                 .textSize(20)
                 .titleSize(30)
                 .build());
 
         addIntroItem(new VerticalIntroItem.Builder()
                 .backgroundColor(R.color.colorPrimary)
-                .image(R.drawable.ic_8930)
+                .image(R.drawable.vish)
                 .title("Step 3")
                 .text("Click on Three Dot option icon." +
                         "\n" +
@@ -49,7 +49,7 @@ public class IntroActivity extends VerticalIntro {
 
         addIntroItem(new VerticalIntroItem.Builder()
                 .backgroundColor(R.color.colorAccent)
-                .image(R.drawable.ic_8930)
+                .image(R.drawable.ic_2259)
                 .title("Step 4")
                 .text("Click on copy share Url, Download will start in background." +
                         "\n" +

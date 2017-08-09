@@ -47,7 +47,6 @@ public class ThumbnailsAdapter3 extends RecyclerView.Adapter<RecyclerView.ViewHo
                         lastPosition = i;
                     }
                 }
-
             });
         } catch (Exception e) {
             e.printStackTrace();

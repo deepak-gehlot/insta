@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,7 +22,10 @@ import com.zomato.photofilters.imageprocessors.Filter;
 import net.alhazmy13.imagefilter.ImageFilter;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import jp.co.cyberagent.android.gpuimage.GPUImage;
@@ -53,6 +57,7 @@ public class PhotoFileterActivity2 extends AppCompatActivity implements SeekBar.
         findViewById(R.id.button_save).setOnClickListener(this);
 
         mGPUImageView = (GPUImageView) findViewById(R.id.gpuimage);
+        mGPUImageView.setScaleType(GPUImage.ScaleType.CENTER_INSIDE);
         filterListView = (RecyclerView) findViewById(R.id.filterListView);
         filterListView.setLayoutManager(new LinearLayoutManager(PhotoFileterActivity2.this, LinearLayoutManager.HORIZONTAL, false));
 
@@ -142,123 +147,123 @@ public class PhotoFileterActivity2 extends AppCompatActivity implements SeekBar.
 
                 t2.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.GRAYSCALE);
                 t2.filter = GPUImageFilterTools.FilterType.GRAYSCALE;
-                t1.title = "GRAYSCALE";
+                t2.title = "GRAYSCALE";
 
                 t3.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.SHARPEN);
                 t3.filter = GPUImageFilterTools.FilterType.SHARPEN;
-                t1.title = "SHARPEN";
+                t3.title = "SHARPEN";
 
                 t4.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.SEPIA);
                 t4.filter = GPUImageFilterTools.FilterType.SEPIA;
-                t1.title = "SEPIA";
+                t4.title = "SEPIA";
 
                 t5.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.SOBEL_EDGE_DETECTION);
                 t5.filter = GPUImageFilterTools.FilterType.SOBEL_EDGE_DETECTION;
-                t1.title = "EDGE DETECTION";
+                t5.title = "EDGE DETECTION";
 
                 t6.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.THREE_X_THREE_CONVOLUTION);
                 t6.filter = GPUImageFilterTools.FilterType.THREE_X_THREE_CONVOLUTION;
-                t1.title = "CONVOLUTION";
+                t6.title = "CONVOLUTION";
 
                 t7.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.FILTER_GROUP);
                 t7.filter = GPUImageFilterTools.FilterType.FILTER_GROUP;
-                t1.title = "FILTER GROUP";
+                t7.title = "FILTER GROUP";
 
                 t8.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.EMBOSS);
                 t8.filter = GPUImageFilterTools.FilterType.EMBOSS;
-                t1.title = "EMBOSS";
+                t8.title = "EMBOSS";
 
                 t9.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.POSTERIZE);
                 t9.filter = GPUImageFilterTools.FilterType.POSTERIZE;
-                t1.title = "POSTERIZE";
+                t9.title = "POSTERIZE";
 
                 t10.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.GAMMA);
                 t10.filter = GPUImageFilterTools.FilterType.GAMMA;
-                t1.title = "GAMMA";
+                t10.title = "GAMMA";
 
                 t11.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.BRIGHTNESS);
                 t11.filter = GPUImageFilterTools.FilterType.BRIGHTNESS;
-                t1.title = "BRIGHTNESS";
+                t11.title = "BRIGHTNESS";
 
                 t12.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.INVERT);
                 t12.filter = GPUImageFilterTools.FilterType.INVERT;
-                t1.title = "INVERT";
+                t12.title = "INVERT";
 
                 t13.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.HUE);
                 t13.filter = GPUImageFilterTools.FilterType.HUE;
-                t1.title = "HUE";
+                t13.title = "HUE";
 
                 t14.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.PIXELATION);
                 t14.filter = GPUImageFilterTools.FilterType.PIXELATION;
-                t1.title = "PIXELATION";
+                t14.title = "PIXELATION";
 
                 t15.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.SATURATION);
                 t15.filter = GPUImageFilterTools.FilterType.SATURATION;
-                t1.title = "SATURATION";
+                t15.title = "SATURATION";
 
                 t16.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.EXPOSURE);
                 t16.filter = GPUImageFilterTools.FilterType.EXPOSURE;
-                t1.title = "EXPOSURE";
+                t16.title = "EXPOSURE";
 
                 t17.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.HIGHLIGHT_SHADOW);
                 t17.filter = GPUImageFilterTools.FilterType.HIGHLIGHT_SHADOW;
-                t1.title = "HIGHLIGHT SHADOW";
+                t17.title = "HIGHLIGHT SHADOW";
 
                 t18.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.MONOCHROME);
                 t18.filter = GPUImageFilterTools.FilterType.MONOCHROME;
-                t1.title = "MONOCHROME";
+                t18.title = "MONOCHROME";
 
                 t19.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.OPACITY);
                 t19.filter = GPUImageFilterTools.FilterType.OPACITY;
-                t1.title = "OPACITY";
+                t19.title = "OPACITY";
 
                 t20.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.RGB);
                 t20.filter = GPUImageFilterTools.FilterType.RGB;
-                t1.title = "RGB";
+                t20.title = "RGB";
 
                 t21.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.WHITE_BALANCE);
                 t21.filter = GPUImageFilterTools.FilterType.WHITE_BALANCE;
-                t1.title = "WHITE BALANCE";
+                t21.title = "WHITE BALANCE";
 
                 t22.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.VIGNETTE);
                 t22.filter = GPUImageFilterTools.FilterType.VIGNETTE;
-                t1.title = "";
+                t22.title = "";
 
                 t23.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.TONE_CURVE);
                 t23.filter = GPUImageFilterTools.FilterType.TONE_CURVE;
-                t1.title = "VIGNETTE";
+                t23.title = "VIGNETTE";
 
                 t24.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.LOOKUP_AMATORKA);
                 t24.filter = GPUImageFilterTools.FilterType.LOOKUP_AMATORKA;
-                t1.title = "LOOKUP AMATORKA";
+                t24.title = "LOOKUP AMATORKA";
 
                 t25.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.CROSSHATCH);
                 t25.filter = GPUImageFilterTools.FilterType.CROSSHATCH;
-                t1.title = "CROSSHATCH";
+                t25.title = "CROSSHATCH";
 
                 t26.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.BOX_BLUR);
                 t26.filter = GPUImageFilterTools.FilterType.BOX_BLUR;
-                t1.title = "BOX BLUR";
+                t26.title = "BOX BLUR";
 
                 t27.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.CGA_COLORSPACE);
                 t27.filter = GPUImageFilterTools.FilterType.CGA_COLORSPACE;
-                t1.title = "COLORSPACE";
+                t27.title = "COLORSPACE";
 
                 t28.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.DILATION);
                 t28.filter = GPUImageFilterTools.FilterType.DILATION;
-                t1.title = "DILATION";
+                t28.title = "DILATION";
 
                 t29.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.KUWAHARA);
                 t29.filter = GPUImageFilterTools.FilterType.KUWAHARA;
-                t1.title = "KUWAHARA";
+                t29.title = "KUWAHARA";
 
                 t30.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.RGB_DILATION);
                 t30.filter = GPUImageFilterTools.FilterType.RGB_DILATION;
-                t1.title = "DILATION";
+                t30.title = "DILATION";
 
                 t31.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.SKETCH);
                 t31.filter = GPUImageFilterTools.FilterType.SKETCH;
-                t1.title = "SKETCH";
+                t31.title = "SKETCH";
 
                 thumbs = new ArrayList<>();
                 thumbs.add(t1);
@@ -307,8 +312,10 @@ public class PhotoFileterActivity2 extends AppCompatActivity implements SeekBar.
     }
 
     private void saveImage() {
-        String fileName = System.currentTimeMillis() + ".jpg";
-        mGPUImageView.saveToPictures(Constant.FOLDER_NAME, fileName, this);
+        Bitmap bitmap = mGPUImageView.getGPUImage().getBitmapWithFilterApplied();
+        saveBitmap(bitmap);
+       /* String fileName = System.currentTimeMillis() + ".jpg";
+        mGPUImageView.saveToPictures(Constant.FOLDER_NAME, fileName, this);*/
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -379,5 +386,22 @@ public class PhotoFileterActivity2 extends AppCompatActivity implements SeekBar.
         gpuImage.setFilter(GPUImageFilterTools.createFilterForType(context, filterType));
         gpuImage.requestRender();
         return gpuImage.getBitmapWithFilterApplied();
+    }
+
+    private void saveBitmap(Bitmap bitmap) {
+        File path = Environment
+                .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        // Create a media file name
+        String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
+        String mImageName = "INSTA_" + timeStamp + ".jpg";
+        File dest = new File(path, Constant.FOLDER_NAME + "/" + mImageName);
+        try {
+            FileOutputStream out = new FileOutputStream(dest);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

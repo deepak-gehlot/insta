@@ -67,7 +67,7 @@ public class DownloadFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         binding.setFragment(this);
 
-        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("6EF78ADD2A651B27934562EFF2ADF942").build();
         binding.adView.loadAd(adRequest);
         binding.adView2.loadAd(adRequest);
     }
