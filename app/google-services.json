@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "1095196660854",
-    "firebase_url": "https://hello-tesyi.firebaseio.com",
-    "project_id": "hello-tesyi",
-    "storage_bucket": "hello-tesyi.appspot.com"
+    "project_number": "926058789392",
+    "firebase_url": "https://downloadinsta-f8f21.firebaseio.com",
+    "project_id": "downloadinsta-f8f21",
+    "storage_bucket": "downloadinsta-f8f21.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1095196660854:android:fcb9d9bdd8b8dba1",
+        "mobilesdk_app_id": "1:926058789392:android:3aed141f62335302",
         "android_client_info": {
-          "package_name": "com.instagramdownloader"
+          "package_name": "com.instagramdownloader.android"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1095196660854-2fq6pjqe4sh5i3keoqujgs33cva8l32m.apps.googleusercontent.com",
+          "client_id": "926058789392-17pqcems87ded8u8l7f4s00pdsjg2dcf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.instagramdownloader.android",
+            "certificate_hash": "482e3e494c94ed67f59981d91e16078d6bb94499"
+          }
+        },
+        {
+          "client_id": "926058789392-u0s18u5dfabo1e9j3f9i9trg5pjqemej.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDkeSfDgUm0U0Rj-hfMkJySwxYNaOMOALA"
+          "current_key": "AIzaSyDaHa4RVgRnwD-4zg1BB8o1xa598W1Xtw0"
         }
       ],
       "services": {
@@ -29,8 +37,57 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926058789392-u0s18u5dfabo1e9j3f9i9trg5pjqemej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926058789392:android:90d9adc2994e8cb9",
+        "android_client_info": {
+          "package_name": "com.instagramdownloaders.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926058789392-cdm59f2jp95kbfa8euikiv1f7dmqvhuq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.instagramdownloaders.android",
+            "certificate_hash": "482e3e494c94ed67f59981d91e16078d6bb94499"
+          }
+        },
+        {
+          "client_id": "926058789392-u0s18u5dfabo1e9j3f9i9trg5pjqemej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaHa4RVgRnwD-4zg1BB8o1xa598W1Xtw0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926058789392-u0s18u5dfabo1e9j3f9i9trg5pjqemej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

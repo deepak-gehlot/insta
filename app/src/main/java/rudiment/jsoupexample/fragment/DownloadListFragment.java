@@ -72,7 +72,7 @@ public class DownloadListFragment extends Fragment implements SwipeRefreshLayout
             }
         });
 
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("6EF78ADD2A651B27934562EFF2ADF942").build();
+        AdRequest adRequest = new AdRequest.Builder().build();
         binding.adView.loadAd(adRequest);
     }
 
@@ -177,4 +177,17 @@ public class DownloadListFragment extends Fragment implements SwipeRefreshLayout
             }
         });
     }
+
+
+    /*
+    * DonloadInsta allows to download images and videos from INSTAGRAM's share links.
+    * By copying image's and video's link which automatically downloads that video/image in background, then you can repost on INSTAGRAM, share FACEBOOK, TWITTER and other social networks.
+
+Features of DownloadInsta:
+* Simply use, just 2 STEPS to download
+* Download in background
+* Just open app and start copying image's and video's link it will download in background.
+* Quickly download videos and download images from INSTAGRAM's links
+* Easily save into device or edit and share to friends
+* Easily explore, delete and share downloaded files on FACEBOOK, TWITTER*/
 }

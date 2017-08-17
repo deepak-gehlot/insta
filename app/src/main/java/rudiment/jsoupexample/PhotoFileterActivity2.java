@@ -227,11 +227,11 @@ public class PhotoFileterActivity2 extends AppCompatActivity implements SeekBar.
 
                 t22.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.VIGNETTE);
                 t22.filter = GPUImageFilterTools.FilterType.VIGNETTE;
-                t22.title = "";
+                t22.title = "VIGNETTE";
 
                 t23.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.TONE_CURVE);
                 t23.filter = GPUImageFilterTools.FilterType.TONE_CURVE;
-                t23.title = "VIGNETTE";
+                t23.title = "TONE CURVE";
 
                 t24.image = getFilterThumbBitmap(PhotoFileterActivity2.this, GPUImageFilterTools.FilterType.LOOKUP_AMATORKA);
                 t24.filter = GPUImageFilterTools.FilterType.LOOKUP_AMATORKA;
@@ -389,8 +389,11 @@ public class PhotoFileterActivity2 extends AppCompatActivity implements SeekBar.
     }
 
     private void saveBitmap(Bitmap bitmap) {
-        File path = Environment
-                .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File folder = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/" + Constant.FOLDER_NAME);
+        if (!folder.exists()) {
+            folder.mkdir();
+        }
         // Create a media file name
         String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
         String mImageName = "INSTA_" + timeStamp + ".jpg";
