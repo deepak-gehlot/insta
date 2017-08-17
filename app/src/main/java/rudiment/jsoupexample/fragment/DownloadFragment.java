@@ -37,6 +37,8 @@ import rudiment.jsoupexample.Util;
 import rudiment.jsoupexample.databinding.FragmentDownloadBinding;
 import rudiment.jsoupexample.util.Clipboard_Utils;
 import rudiment.jsoupexample.util.Constant;
+import rudiment.jsoupexample.util.Extension;
+import rudiment.jsoupexample.util.ValidationTemplate;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
 import static android.os.Environment.DIRECTORY_PICTURES;
@@ -79,14 +81,18 @@ public class DownloadFragment extends Fragment {
                     public void onPermissionsGranted(String[] permissions) throws SecurityException {
                         // given permissions are granted
                         if (!url.isEmpty() && URLUtil.isValidUrl(url)) {
-                            DownloadManager dm = (DownloadManager) getActivity().getSystemService(DOWNLOAD_SERVICE);
-                            DownloadManager.Request request = new DownloadManager.Request(
-                                    Uri.parse(url));
-                            String fileName = URLUtil.guessFileName(url, null, null);
-                            request.setDestinationInExternalPublicDir(DIRECTORY_PICTURES,
-                                    File.separator + Constant.FOLDER_NAME + File.separator + fileName);
-                            dm.enqueue(request);
-                            Toast.makeText(getActivity(), "Downloading started.", Toast.LENGTH_SHORT).show();
+                            if (Extension.getInstance().executeStrategy(getActivity(), "", ValidationTemplate.INTERNET)) {
+                                DownloadManager dm = (DownloadManager) getActivity().getSystemService(DOWNLOAD_SERVICE);
+                                DownloadManager.Request request = new DownloadManager.Request(
+                                        Uri.parse(url));
+                                String fileName = URLUtil.guessFileName(url, null, null);
+                                request.setDestinationInExternalPublicDir(DIRECTORY_PICTURES,
+                                        File.separator + Constant.FOLDER_NAME + File.separator + fileName);
+                                dm.enqueue(request);
+                                Toast.makeText(getActivity(), "Downloading started.", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getActivity(), getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
+                            }
                         } else {
                             Toast.makeText(getActivity(), "Paste Url.", Toast.LENGTH_SHORT).show();
                         }
@@ -105,7 +111,11 @@ public class DownloadFragment extends Fragment {
     public void loadUrl() {
         final String url = binding.urlEdt.getText().toString().trim();
         if (!url.isEmpty() && URLUtil.isValidUrl(url)) {
-            new Task().execute(url);
+            if (Extension.getInstance().executeStrategy(getActivity(), "", ValidationTemplate.INTERNET)) {
+                new Task().execute(url);
+            } else {
+                Toast.makeText(getActivity(), getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
+            }
         } else {
             Toast.makeText(getActivity(), "Paste share url", Toast.LENGTH_SHORT).show();
         }

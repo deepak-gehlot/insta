@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rudiment.jsoupexample.util.Constant;
+import rudiment.jsoupexample.util.Extension;
+import rudiment.jsoupexample.util.ValidationTemplate;
 
 import static android.os.Environment.DIRECTORY_PICTURES;
 
@@ -87,12 +89,14 @@ public class ClipboardWatcherService extends Service {
                 log.append(clipboard);
                 log.append("\n\n");
                 if (clipboard.contains("https://www.instagram.com/p/")) {
-                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-                        @Override
-                        public void run() {
-                            new Task().execute(clipboard);
-                        }
-                    });
+                    if (Extension.getInstance().executeStrategy(ClipboardWatcherService.this, "", ValidationTemplate.INTERNET)) {
+                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+                                new Task().execute(clipboard);
+                            }
+                        });
+                    }
                 }
             }
         }
